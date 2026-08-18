@@ -128,3 +128,8 @@ tests/testthat/        -- unit tests (incl. cross-checks against the
                            classic HC0 sandwich when no variables are
                            dropped)
 ```
+## Use of AI to generate this package
+
+claude.ai was used with the following prompt to generate this package, using the LLM Sonnett 5 Medium:
+
+"Can you provide the code for an R package that computes a covariance matrix for a linear or logistic regression model after variable selection. The covariance matrix should be based on the robust sandwich formula, but that formula should include both selected and unselected variables. For unselected variables, the regression coefficient should be set to 0. The idea is to supply a variance estimate also for these unselected variables, as nonselection of a variable is not sure.  The R package should provide a master function that takes a model fit (e.g. after R's step() function) and a data set, detect the applied model (lm or glm) and output the zero-corrected regression coefficient vector (with zeros for the unselected variables) and the robust zero-corrected variance-covariance matrix."
