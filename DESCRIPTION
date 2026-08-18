@@ -1,0 +1,28 @@
+Package: selectSandwich
+Type: Package
+Title: Zero-Padded Robust Sandwich Covariance After Variable Selection
+Version: 0.1.0
+Authors@R: person("Analyst", "User", email = "you@example.com", role = c("aut", "cre"))
+Description: After a variable-selection procedure such as stepwise selection
+    (e.g. via stats::step()), the fitted lm/glm object only contains the
+    selected variables. This package computes a "zero-corrected" coefficient
+    vector over the full candidate variable set -- selected variables keep
+    their estimated coefficient, unselected variables are set to exactly
+    zero -- together with a robust (Huber/White sandwich-type)
+    variance-covariance matrix for that full-length vector. Because the
+    sandwich bread and meat are computed using the *full* design matrix
+    (all candidate predictors, selected or not) evaluated at the
+    zero-padded coefficient vector, unselected variables receive a
+    genuine, typically small but non-zero, variance estimate. This
+    reflects the fact that non-selection of a variable in one particular
+    fitted model is not certain evidence that its true effect is zero,
+    and avoids reporting deterministic zero standard errors for dropped
+    variables. The method supports both linear models (lm) and generalized
+    linear models (glm), detected automatically from the fitted object.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Depends: R (>= 3.5.0)
+Imports: stats
+Suggests: testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Config/roxygen2/version: 8.0.0
